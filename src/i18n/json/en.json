@@ -1,0 +1,9 @@
+{
+  "message": {
+    "hello": "hello world",
+    "greeting": "good morning",
+    "sider": [
+      "dashboard", "hello world", "language", "table"
+    ]
+  }
+}

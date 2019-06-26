@@ -1,0 +1,109 @@
+<template>
+  <a-form
+    id="components-form-demo-normal-login"
+    :form="form"
+    class="login-form"
+    @submit="handleSubmit"
+  >
+    <a-form-item>
+      <a-input
+        v-decorator="[
+          'userName',
+          { rules: [{ required: true, message: 'Please input your username!' }] }
+        ]"
+        placeholder="admin"
+      >
+        <a-icon
+          slot="prefix"
+          type="user"
+          style="color: rgba(0,0,0,.25)"
+        />
+      </a-input>
+    </a-form-item>
+    <a-form-item>
+      <a-input
+        v-decorator="[
+          'password',
+          { rules: [{ required: true, message: 'Please input your Password!' }] }
+        ]"
+        type="password"
+        placeholder="123"
+      >
+        <a-icon
+          slot="prefix"
+          type="lock"
+          style="color: rgba(0,0,0,.25)"
+        />
+      </a-input>
+    </a-form-item>
+    <a-form-item>
+      <a-checkbox
+        v-decorator="[
+          'remember',
+          {
+            valuePropName: 'checked',
+            initialValue: true,
+          }
+        ]"
+      >
+        Remember me
+      </a-checkbox>
+      <a
+        class="login-form-forgot"
+        href=""
+      >
+        Forgot password
+      </a>
+      <a-button
+        type="primary"
+        html-type="submit"
+        class="login-form-button"
+      >
+        Log in
+      </a-button>
+      Or <a href="">
+        register now!
+      </a>
+    </a-form-item>
+  </a-form>
+</template>
+
+<script>
+
+export default {
+  beforeCreate() {
+    this.form = this.$form.createForm(this)
+  },
+  methods: {
+    handleSubmit(e) {
+      e.preventDefault()
+      this.form.validateFields((err, values) => {
+        if (!err) {
+          if (values.userName === 'admin' && values.password === '123') {
+            this.$message.success('登录成功')
+            this.storage.cookie.set('token', 'token_' + new Date().getTime())
+            this.$router.push({ path: '/' })
+          } else {
+            this.$message.error('请输入正确的账号或密码')
+          }
+        }
+      })
+    }
+  }
+}
+</script>
+<style>
+#components-form-demo-normal-login {
+  padding: 10% 30%;
+  min-width: 600px;
+}
+#components-form-demo-normal-login .login-form {
+  max-width: 300px;
+}
+#components-form-demo-normal-login .login-form-forgot {
+  float: right;
+}
+#components-form-demo-normal-login .login-form-button {
+  width: 100%;
+}
+</style>

@@ -1,0 +1,35 @@
+[
+  {
+    "path": "/",
+    "name": "index",
+    "component": "/Index",
+    "redirect": "dashboard",
+    "children": [
+      {
+        "path": "dashboard",
+        "name": "dashboard",
+        "component": "/Dashboard"
+      },
+      {
+        "path": "hello",
+        "name": "hello",
+        "component": "/Hello"
+      },
+      {
+        "path": "language",
+        "name": "language",
+        "component": "/Language"
+      },
+      {
+        "path": "table",
+        "name": "table",
+        "component": "/Table"
+      }
+    ]
+  },
+  {
+    "path": "/login",
+    "name": "login",
+    "component": "/Login"
+  }
+]

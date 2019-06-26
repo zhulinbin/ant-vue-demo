@@ -1,0 +1,190 @@
+@import "./vars.scss";
+/* 头像 --------------- */
+//circle
+@mixin avatar-base() {
+  overflow: hidden;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  vertical-align: middle;
+  img {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+}
+
+@mixin avatar-normal() {
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  border-radius: 16px;
+}
+
+@mixin avatar-small() {
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  border-radius: 5px;
+}
+
+@mixin avatar-large() {
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  min-width: 35px;
+  border-radius: 22.5px;
+}
+@mixin avatar-x-large() {
+  width: 45px;
+  height: 45px;
+  line-height: 45px;
+  border-radius: 22.5px;
+}
+
+@mixin avatar-xx-large() {
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  border-radius: 30px;
+}
+
+.ent-avatar {
+  @include avatar-base();
+  @include avatar-normal();
+  &.small {
+    @include avatar-small();
+  }
+  &.large {
+    @include avatar-large();
+  }
+  &.x-large {
+    @include avatar-x-large();
+  }
+  &.xx-large {
+    @include avatar-xx-large();
+  }
+}
+
+@mixin avatar-text-base() {
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  border-radius: 22.5px;
+  border: $ent-border-base;
+  text-align: center;
+}
+
+.ent-avatar-text {
+  @include avatar-text-base();
+  &.primary {
+    color: $ent-color-primary;
+  }
+}
+
+//square
+@mixin square-base() {
+  overflow: hidden;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  vertical-align: middle;
+  img {
+    width: auto;
+    height: 100%;
+    display: block;
+  }
+}
+
+@mixin square-normal() {
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+}
+
+@mixin square-x-small() {
+  width: 21px;
+  height: 21px;
+  line-height: 21px;
+}
+
+@mixin square-small() {
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+}
+
+@mixin square-large() {
+  width: 112px;
+  height: 74px;
+  line-height: 74px;
+}
+
+.ent-square {
+  @include square-base();
+  @include square-normal();
+  &.x-small {
+    @include square-x-small();
+  }
+  &.small {
+    @include square-small();
+  }
+  &.large {
+    @include square-large();
+  }
+}
+
+/* margin/padding --------------- */
+@each $key, $value in $ent-offset-list {
+  [ent-margin-top-#{$key}] {
+    margin-top: $value;
+  }
+  [ent-padding-top-#{$key}] {
+    padding-top: $value;
+  }
+}
+
+@each $key, $value in $ent-offset-list {
+  [ent-margin-right-#{$key}] {
+    margin-right: $value;
+  }
+  [ent-padding-right-#{$key}] {
+    padding-right: $value;
+  }
+}
+
+@each $key, $value in $ent-offset-list {
+  [ent-margin-bottom-#{$key}] {
+    margin-bottom: $value;
+  }
+  [ent-padding-bottom-#{$key}] {
+    padding-bottom: $value;
+  }
+}
+
+@each $key, $value in $ent-offset-list {
+  [ent-margin-left-#{$key}] {
+    margin-left: $value;
+  }
+  [ent-padding-left-#{$key}] {
+    padding-left: $value;
+  }
+}
+
+/* 特效 --------------- */
+@keyframes swing {
+  0% {
+    transform: rotate(5deg);
+    transform-origin: 50% 0;
+  }
+  50% {
+    transform: rotate(0);
+    transform-origin: 50% 0;
+  }
+  100% {
+    transform: rotate(-5deg);
+    transform-origin: 50% 0;
+  }
+}
